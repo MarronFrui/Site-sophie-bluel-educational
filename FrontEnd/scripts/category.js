@@ -1,19 +1,34 @@
 function getCategories() {
   fetch("http://localhost:5678/api/categories")
-  .then((response) => response.json())
-  .then((categories) => {
+    .then((response) => response.json())
+    .then((categories) => {
+      const container = document.querySelector(".category");
 
-    const container = document.querySelector(".category")
+      for (const category of categories) {
+        const button = document.createElement("button");
 
-    for (const category of categories) {
+        button.setAttribute("data-category-id", category.id);
+        button.classList.add("category-btn");
+        button.textContent = category.name;
 
-      const button = document.createElement("button");
+        button.addEventListener("click", () => {
+          const selectedId = button.dataset.categoryId;
+          const figures = document.querySelectorAll(".gallery figure");
 
-      button.setAttribute("data-category-id", category.id);
-      button.classList.add("category-btn")
-      button.textContent  = category.name;
-    }
-  });
+          figures.forEach((figure) => {
+            const figureCategory = figure.dataset.categoryId;
+
+            if (selectedId === "0" || selectedId === figureCategory) {
+              figure.classList.remove("hidden");
+            } else {
+              figure.classList.add("hidden");
+            }
+          });
+        });
+
+        container.appendChild(button);
+      }
+    });
 }
 
 getCategories();

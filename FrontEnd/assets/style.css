@@ -296,3 +296,7 @@ figcaption {
 	margin-top: 0.3rem;
 	font-size: regular;
 }
+
+.hidden {
+    display: none;
+}
