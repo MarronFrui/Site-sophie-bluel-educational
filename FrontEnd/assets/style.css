@@ -169,14 +169,20 @@ nav ul {
     align-items: center;
     list-style-type: none;
 }
-nav li {
+nav li, nav a {
     padding: 0 10px;
     font-size: 1.2em;
 }
 
-li:hover {
+li:hover, a:hover {
     color: #b1663c;
 }
+
+a {
+    text-decoration:none;
+    color: inherit;
+}
+
 #introduction {
     display: flex;
     align-items: center;
