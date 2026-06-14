@@ -6,28 +6,32 @@ function getCategories() {
 
       for (const category of categories) {
         const button = document.createElement("button");
-
+        
         button.setAttribute("data-category-id", category.id);
         button.classList.add("category-btn");
         button.textContent = category.name;
-
-        button.addEventListener("click", () => {
-          const selectedId = button.dataset.categoryId;
-          const figures = document.querySelectorAll(".gallery figure");
-
-          figures.forEach((figure) => {
-            const figureCategory = figure.dataset.categoryId;
-
-            if (selectedId === "0" || selectedId === figureCategory) {
-              figure.classList.remove("hidden");
-            } else {
-              figure.classList.add("hidden");
-            }
-          });
-        });
-
         container.appendChild(button);
       }
+        
+        const buttons = document.querySelectorAll(".category button");
+        buttons.forEach((btn) => {
+
+          btn.addEventListener("click", () => {
+            const selectedId = btn.dataset.categoryId;
+            const figures = document.querySelectorAll(".gallery figure");
+            
+            figures.forEach((figure) => {
+              const figureCategory = figure.dataset.categoryId;
+              
+              if (selectedId === "0" || selectedId === figureCategory) {
+                figure.classList.remove("hidden");
+              } else {
+                figure.classList.add("hidden");
+              }
+            });
+          });
+        })
+
     });
 }
 
