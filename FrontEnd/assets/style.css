@@ -164,11 +164,14 @@ h2 {
     font-size: 30px;
     color: #1d6154;
 }
+
 nav ul {
     display: flex;
+    gap: 1rem;
     align-items: center;
     list-style-type: none;
 }
+
 nav li, nav a {
     padding: 0 10px;
     font-size: 1.2em;
