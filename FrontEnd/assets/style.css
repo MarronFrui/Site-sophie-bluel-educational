@@ -128,18 +128,46 @@ table {
 }
 /** end reset css**/
 body {
-  max-width: 1140px;
+  max-width: 1440px;
   margin: auto;
   font-family: 'Work Sans';
   font-size: 14px;
 }
 header {
-  display: flex;
-  justify-content: space-between;
-  margin: 50px 0;
+  margin-bottom: 50px;
 }
+
+main {
+  max-width: 1140px;
+  margin: auto;
+}
+
 section {
   margin: 50px 0;
+}
+
+.edition-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  min-height: 3rem;
+  margin-bottom: 2rem;
+}
+
+.edition {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: white;
+}
+
+.header-content {
+  max-width: 1140px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 h1 {
@@ -192,6 +220,10 @@ a {
   color: inherit;
 }
 
+.intro {
+  padding-right: 7rem;
+}
+
 #introduction {
   display: flex;
   align-items: center;
@@ -209,14 +241,13 @@ a {
 
 #introduction article {
   flex: 1;
-  padding: 0 5rem 0 0;
 }
 #introduction h2 {
   margin-bottom: 1em;
 }
 
 #introduction p {
-  margin-bottom: 0.5em;
+  margin-bottom: 1.5em;
 }
 #portfolio h2 {
   text-align: center;

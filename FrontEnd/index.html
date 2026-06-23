@@ -15,16 +15,34 @@
   </head>
   <body>
     <header>
-      <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-      <nav>
-        <ul>
-          <a>projets</a>
-          <a>contact</a>
-          <a class="login" href="login.html">login</a>
-          <a class="logout hidden" href="#">logout</a>
-          <img src="./assets/icons/instagram.png" alt="Instagram" />
-        </ul>
-      </nav>
+      <div class="edition-container">
+        <div class="edition">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M12 20h9"></path>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+          </svg>
+          mode édition
+        </div>
+      </div>
+      <div class="header-content">
+        <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+        <nav>
+          <ul>
+            <a>projets</a>
+            <a>contact</a>
+            <a class="login" href="login.html">login</a>
+            <a class="logout hidden" href="#">logout</a>
+            <img src="./assets/icons/instagram.png" alt="Instagram" />
+          </ul>
+        </nav>
+      </div>
     </header>
     <main>
       <section id="introduction">
@@ -33,20 +51,22 @@
         </figure>
         <article>
           <h2>Designer d'espace</h2>
-          <p>
-            Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à
-            la livraison finale du chantier.
-          </p>
-          <p>
-            Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les
-            matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des
-            matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du
-            planning et du budget.
-          </p>
-          <p>
-            En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG,
-            décorateur(trice)
-          </p>
+          <div class="intro">
+            <p>
+              Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception
+              à la livraison finale du chantier.
+            </p>
+            <p>
+              Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les
+              matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des
+              matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du
+              planning et du budget.
+            </p>
+            <p>
+              En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte
+              DPLG, décorateur(trice)
+            </p>
+          </div>
         </article>
       </section>
       <section id="portfolio">
@@ -74,7 +94,7 @@
     <footer>
       <nav>
         <ul>
-          Mentions Légales</li>
+          <li>Mentions Légales</li>
         </ul>
       </nav>
     </footer>
