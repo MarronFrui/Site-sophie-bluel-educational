@@ -1,28 +1,21 @@
-function isLoggedin() {
-  const token = getToken();
-  return token !== null && token !== '';
-}
+const loginButton = document.querySelector('.login');
+const logoutButton = document.querySelector('.logout');
 
-function getToken() {
-  return localStorage.getItem('token');
-}
-
-function logout() {
-  return localStorage.clear('token');
-}
-
-function updateHeader() {
-  const loginButton = document.querySelector('nav a[href="login.html"]');
-  if (isLoggedin()) {
-    loginButton.textContent = 'logout';
-    loginButton.href = '#';
-    loginButton.addEventListener('click', (event) => {
-      event.preventDefault();
-      logout();
-    });
+function isLoggedIn() {
+  const token = localStorage.getItem('token');
+  if (token !== null && token !== '') {
+    loginButton.classList.add('hidden');
+    logoutButton.classList.remove('hidden');
   } else {
-    return;
+    loginButton.classList.remove('hidden');
+    logoutButton.classList.add('hidden');
   }
 }
 
-updateHeader();
+logoutButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  localStorage.removeItem('token');
+  isLoggedIn();
+});
+
+isLoggedIn();

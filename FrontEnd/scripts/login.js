@@ -1,4 +1,4 @@
-function Auth() {
+function Login() {
   const form = document.querySelector('form#login');
 
   form.addEventListener('submit', (event) => {
@@ -27,7 +27,7 @@ function Auth() {
       })
       .then((data) => {
         localStorage.setItem('token', data.token);
-        console.log({ data });
+        console.log({ data: data.token });
         window.location.href = 'index.html';
       })
       .catch((error) => {
@@ -36,4 +36,4 @@ function Auth() {
   });
 }
 
-Auth();
+Login();
