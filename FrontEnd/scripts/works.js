@@ -3,6 +3,7 @@ function getWorks() {
     .then((response) => response.json())
     .then((works) => {
       const container = document.querySelector('.gallery');
+      const modalContainer = document.querySelector('.modal-gallery');
 
       for (const work of works) {
         const figure = document.createElement('figure');
@@ -18,6 +19,18 @@ function getWorks() {
         figure.appendChild(img);
         figure.appendChild(figcaption);
         container.appendChild(figure);
+      }
+
+      for (const work of works) {
+        const card = document.createElement('div');
+        card.classList.add('modal-work');
+
+        const img = document.createElement('img');
+        img.src = work.imageUrl;
+        img.alt = work.title;
+
+        card.appendChild(img);
+        modalContainer.appendChild(card);
       }
     });
 }
