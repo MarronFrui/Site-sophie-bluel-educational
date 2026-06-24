@@ -4,6 +4,7 @@ const editionBand = document.querySelector('.edition-container');
 const modifyButton = document.querySelector('.edition.black');
 const categories = document.querySelector('.category');
 const portfolioTitle = document.querySelector('.portfolio-title');
+const edition = document.querySelector('.edition');
 
 function isLoggedIn() {
   const token = localStorage.getItem('token');
@@ -17,7 +18,7 @@ function isLoggedIn() {
   } else {
     editionBand.classList.add('hidden');
     modifyButton.classList.add('hidden');
-    categories.classList.add('hidden');
+    categories.classList.remove('hidden');
     portfolioTitle.classList.remove('margin-bottom');
     loginButton.classList.remove('hidden');
     logoutButton.classList.add('hidden');
@@ -29,5 +30,9 @@ logoutButton.addEventListener('click', (event) => {
   localStorage.removeItem('token');
   isLoggedIn();
 });
+
+// edition.addEventListener('click', () => {
+//   window.openModal()
+// })
 
 isLoggedIn();
