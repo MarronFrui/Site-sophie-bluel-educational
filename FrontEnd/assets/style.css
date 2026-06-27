@@ -190,6 +190,8 @@ section {
 
 .dialog {
   width: 55%;
+  max-width: 630px;
+  max-height: 688px;
   height: 90%;
   border: none;
   border-radius: 0.5rem;
@@ -207,7 +209,6 @@ section {
 }
 
 .dialog button:hover {
-  color: white;
   cursor: pointer;
 }
 
@@ -234,6 +235,10 @@ section {
   width: 5%;
   font-size: 1.5rem;
   cursor: pointer;
+}
+
+.modal-close:hover {
+  color: unset;
 }
 
 .modal-content h2 {
@@ -266,6 +271,29 @@ section {
   margin-left: auto;
   margin-top: auto;
   align-items: center;
+}
+
+.delete-work {
+  display: flex;
+  background-color: black;
+  padding: 0;
+  color: white;
+  border-radius: 4px;
+  position: relative;
+  top: -110px;
+  left: 45px;
+  border: none;
+  width: auto;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.trash-icon {
+  color: white;
+  position: relative;
+  right: 5px;
 }
 
 dialog button.add-work {

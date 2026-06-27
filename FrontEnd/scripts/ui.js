@@ -5,7 +5,8 @@ const modifyButton = document.querySelector('.edition.black');
 const categories = document.querySelector('.category');
 const portfolioTitle = document.querySelector('.portfolio-title');
 const edition = document.querySelector('.edition');
-const dialog = document.querySelector('dialog');
+const galleryDialog = document.querySelector('#galleryDialog');
+const AddPhotoDialog = document.querySelector('#addPhotoDialog');
 const closeModal = document.querySelector('.modal-close');
 
 function toggleClass(element, className, shouldAdd) {
@@ -42,15 +43,15 @@ logoutButton.addEventListener('click', (event) => {
   isLoggedIn();
 });
 
-if (edition && dialog) {
+if (edition && galleryDialog) {
   edition.addEventListener('click', () => {
-    dialog.showModal();
+    galleryDialog.showModal();
   });
   modifyButton.addEventListener('click', () => {
-    dialog.showModal();
+    galleryDialog.showModal();
   });
   closeModal.addEventListener('click', () => {
-    dialog.close();
+    galleryDialog.close();
   });
 }
 
