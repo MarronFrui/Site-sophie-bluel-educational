@@ -37,6 +37,30 @@ function getWorks() {
         `;
         deleteBtn.classList.add('delete-work');
 
+        deleteBtn.addEventListener('click', () => {
+          fetch(`http://localhost:5678/api/works/${work.id}`, {
+            method: 'DELETE',
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`,
+            },
+          })
+            .then((response) => {
+              if (response.ok) {
+                getWorks();
+              } else {
+                if (response.status === 401) {
+                  throw new Error('Unauthorized');
+                }
+                if (response.status === 500) {
+                  throw new Error('Unexpected Behaviour');
+                }
+              }
+            })
+            .catch((error) => {
+              console.error('Network error:', error);
+            });
+        });
+
         card.appendChild(img);
         card.appendChild(deleteBtn);
         modalContainer.appendChild(card);

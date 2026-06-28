@@ -7,7 +7,9 @@ const portfolioTitle = document.querySelector('.portfolio-title');
 const edition = document.querySelector('.edition');
 const galleryDialog = document.querySelector('#galleryDialog');
 const AddPhotoDialog = document.querySelector('#addPhotoDialog');
-const closeModal = document.querySelector('.modal-close');
+const closeGalleryModal = galleryDialog.querySelector('.modal-close');
+const closeAddPhotoModal = AddPhotoDialog.querySelector('.modal-close');
+const addWork = document.querySelector('.add-work');
 
 function toggleClass(element, className, shouldAdd) {
   if (!element) return;
@@ -50,8 +52,15 @@ if (edition && galleryDialog) {
   modifyButton.addEventListener('click', () => {
     galleryDialog.showModal();
   });
-  closeModal.addEventListener('click', () => {
+  closeGalleryModal.addEventListener('click', () => {
     galleryDialog.close();
+  });
+  closeAddPhotoModal.addEventListener('click', () => {
+    AddPhotoDialog.close();
+  });
+  addWork.addEventListener('click', () => {
+    galleryDialog.close();
+    AddPhotoDialog.showModal();
   });
 }
 
