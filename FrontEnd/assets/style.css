@@ -283,8 +283,8 @@ section {
   top: -110px;
   left: 45px;
   border: none;
-  width: auto;
-  height: auto;
+  width: 20px;
+  height: 20px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
