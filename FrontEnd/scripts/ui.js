@@ -10,6 +10,7 @@ const AddPhotoDialog = document.querySelector('#addPhotoDialog');
 const closeGalleryModal = galleryDialog.querySelector('.modal-close');
 const closeAddPhotoModal = AddPhotoDialog.querySelector('.modal-close');
 const addWork = document.querySelector('.add-work');
+const backArrow = document.querySelector('.back-arrow');
 
 function toggleClass(element, className, shouldAdd) {
   if (!element) return;
@@ -61,6 +62,10 @@ if (edition && galleryDialog) {
   addWork.addEventListener('click', () => {
     galleryDialog.close();
     AddPhotoDialog.showModal();
+  });
+  backArrow.addEventListener('click', () => {
+    AddPhotoDialog.close();
+    galleryDialog.showModal();
   });
 }
 

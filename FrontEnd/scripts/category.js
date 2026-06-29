@@ -1,7 +1,11 @@
+let allCategories = [];
+const selectCategory = document.querySelector('#category');
+
 function getCategories() {
   fetch('http://localhost:5678/api/categories')
     .then((response) => response.json())
     .then((categories) => {
+      allCategories = categories;
       const container = document.querySelector('.category');
 
       for (const category of categories) {
@@ -11,6 +15,13 @@ function getCategories() {
         button.classList.add('category-btn');
         button.textContent = category.name;
         container.appendChild(button);
+      }
+
+      for (const category of allCategories) {
+        const option = document.createElement('option');
+        option.value = category.id;
+        option.textContent = category.name;
+        selectCategory.appendChild(option);
       }
 
       const buttons = document.querySelectorAll('.category button');
