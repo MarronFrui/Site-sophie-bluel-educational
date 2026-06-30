@@ -16,6 +16,10 @@ const filePicker = document.querySelector('#file-picker');
 const previewImage = document.querySelector('.photo-preview');
 const placeholderSvg = document.querySelector('.image-placeholder');
 const filePickerText = document.querySelector('.file-picker-text');
+const confirmButton = document.querySelector('#confirm');
+const titleInput = document.querySelector('#title');
+const categorySelect = document.querySelector('#category');
+let selectedFile = null;
 
 function toggleClass(element, className, shouldAdd) {
   if (!element) return;
@@ -24,6 +28,53 @@ function toggleClass(element, className, shouldAdd) {
   } else {
     element.classList.remove(className);
   }
+}
+
+function isFormValid() {
+  return selectedFile && titleInput.value.trim() !== '' && categorySelect.value !== '';
+}
+
+function updateButtonState() {
+  const valid = isFormValid();
+
+  confirmButton.disabled = !valid;
+
+  if (valid) {
+    confirmButton.classList.remove('grey');
+  } else {
+    confirmButton.classList.add('grey');
+  }
+}
+
+function sendData() {
+  if (!isFormValid()) return;
+
+  const formData = new FormData();
+  formData.append('image', selectedFile);
+  formData.append('title', titleInput.value);
+  formData.append('category', categorySelect.value);
+
+  fetch('http://localhost:5678/api/works', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+    body: formData,
+  })
+    .then((response) => {
+      if (!response.ok) {
+        console.error('Error:', response.statusText);
+        return;
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log('Success:', data);
+      AddPhotoDialog.close();
+    })
+    .catch((error) => {
+      console.error('Network error:', error);
+    });
 }
 
 function isLoggedIn() {
@@ -75,16 +126,27 @@ if (edition && galleryDialog) {
   addPhoto.addEventListener('click', () => {
     filePicker.click();
   });
+
   filePicker.addEventListener('change', () => {
-    const file = filePicker.files[0];
-    const imageUrl = URL.createObjectURL(file);
+    selectedFile = filePicker.files[0];
+    const imageUrl = URL.createObjectURL(selectedFile);
     previewImage.src = imageUrl;
     placeholderSvg.classList.add('hidden');
     addPhoto.classList.add('hidden');
     filePicker.classList.add('hidden');
     previewImage.classList.remove('hidden');
     filePickerText.classList.add('hidden');
+    updateButtonState();
+  });
+
+  titleInput.addEventListener('input', updateButtonState);
+
+  categorySelect.addEventListener('change', updateButtonState);
+
+  confirmButton.addEventListener('click', () => {
+    sendData();
   });
 }
 
 isLoggedIn();
+updateButtonState();

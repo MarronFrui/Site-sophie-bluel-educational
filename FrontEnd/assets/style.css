@@ -313,12 +313,17 @@ section {
   height: 16px;
 }
 
+dialog button.add-work.grey {
+  background-color: grey;
+  cursor: default;
+}
+
 .modal-close {
   display: flex;
   align-self: center;
   background: none;
   border: none;
-  width: 5%;
+  width: 6%;
   font-size: 2rem;
   cursor: pointer;
 }
