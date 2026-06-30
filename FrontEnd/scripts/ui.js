@@ -11,6 +11,11 @@ const closeGalleryModal = galleryDialog.querySelector('.modal-close');
 const closeAddPhotoModal = AddPhotoDialog.querySelector('.modal-close');
 const addWork = document.querySelector('.add-work');
 const backArrow = document.querySelector('.back-arrow');
+const addPhoto = document.querySelector('.add-photo-btn');
+const filePicker = document.querySelector('#file-picker');
+const previewImage = document.querySelector('.photo-preview');
+const placeholderSvg = document.querySelector('.image-placeholder');
+const filePickerText = document.querySelector('.file-picker-text');
 
 function toggleClass(element, className, shouldAdd) {
   if (!element) return;
@@ -66,6 +71,19 @@ if (edition && galleryDialog) {
   backArrow.addEventListener('click', () => {
     AddPhotoDialog.close();
     galleryDialog.showModal();
+  });
+  addPhoto.addEventListener('click', () => {
+    filePicker.click();
+  });
+  filePicker.addEventListener('change', () => {
+    const file = filePicker.files[0];
+    const imageUrl = URL.createObjectURL(file);
+    previewImage.src = imageUrl;
+    placeholderSvg.classList.add('hidden');
+    addPhoto.classList.add('hidden');
+    filePicker.classList.add('hidden');
+    previewImage.classList.remove('hidden');
+    filePickerText.classList.add('hidden');
   });
 }
 

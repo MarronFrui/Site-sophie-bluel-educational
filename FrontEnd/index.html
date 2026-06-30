@@ -146,6 +146,7 @@
         </div>
         <h2>Ajout photo</h2>
         <div class="add-photo">
+          <img class="photo-preview hidden" alt="Aperçu" />
           <svg
             class="image-placeholder"
             xmlns="http://www.w3.org/2000/svg"
@@ -180,7 +181,8 @@
             </svg>
             Ajouter photo
           </button>
-          <p>jpg, png : 4mo max</p>
+          <input id="file-picker" class="hidden" type="file" accept="image/png, image/jpeg" />
+          <p class="file-picker-text">jpg, png : 4mo max</p>
         </div>
         <div class="modal-title">
           <h3>Titre</h3>
