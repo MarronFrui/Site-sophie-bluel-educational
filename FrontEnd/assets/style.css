@@ -221,6 +221,10 @@ section {
   box-sizing: border-box;
 }
 
+#galleryDialog .modal-header {
+  justify-content: flex-end;
+}
+
 .modal-header {
   display: flex;
   justify-content: space-between;

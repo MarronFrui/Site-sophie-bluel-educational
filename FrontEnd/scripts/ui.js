@@ -71,10 +71,34 @@ function sendData() {
     .then((data) => {
       console.log('Success:', data);
       AddPhotoDialog.close();
+      resetAddPhotoForm();
+
+      const figure = createGalleryFigure(data);
+      document.querySelector('.gallery').appendChild(figure);
+
+      const card = createModalWorkCard(data);
+      document.querySelector('.modal-gallery').appendChild(card);
     })
     .catch((error) => {
       console.error('Network error:', error);
     });
+}
+
+function resetAddPhotoForm() {
+  selectedFile = null;
+  filePicker.value = '';
+  titleInput.value = '';
+  categorySelect.value = '';
+
+  previewImage.src = '';
+  previewImage.classList.add('hidden');
+
+  placeholderSvg.classList.remove('hidden');
+  addPhoto.classList.remove('hidden');
+  filePicker.classList.remove('hidden');
+  filePickerText.classList.remove('hidden');
+
+  updateButtonState();
 }
 
 function isLoggedIn() {
@@ -114,6 +138,18 @@ if (edition && galleryDialog) {
   });
   closeAddPhotoModal.addEventListener('click', () => {
     AddPhotoDialog.close();
+    resetAddPhotoForm();
+  });
+  galleryDialog.addEventListener('click', (event) => {
+    if (event.target === galleryDialog) {
+      galleryDialog.close();
+    }
+  });
+  AddPhotoDialog.addEventListener('click', (event) => {
+    if (event.target === AddPhotoDialog) {
+      AddPhotoDialog.close();
+      resetAddPhotoForm();
+    }
   });
   addWork.addEventListener('click', () => {
     galleryDialog.close();
@@ -122,6 +158,7 @@ if (edition && galleryDialog) {
   backArrow.addEventListener('click', () => {
     AddPhotoDialog.close();
     galleryDialog.showModal();
+    resetAddPhotoForm();
   });
   addPhoto.addEventListener('click', () => {
     filePicker.click();
