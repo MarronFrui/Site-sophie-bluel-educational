@@ -42,13 +42,13 @@ function getCategories() {
 
           const selectedId = btn.dataset.categoryId;
           const figures = document.querySelectorAll('.gallery figure');
+          btn.classList.add('active');
 
           figures.forEach((figure) => {
             const figureCategory = figure.dataset.categoryId;
 
             if (selectedId === '0' || selectedId === figureCategory) {
               figure.classList.remove('hidden');
-              btn.classList.add('active');
             } else {
               figure.classList.add('hidden');
             }
