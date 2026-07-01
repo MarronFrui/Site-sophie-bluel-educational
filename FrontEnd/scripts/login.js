@@ -1,4 +1,4 @@
-function Login() {
+function initLogin() {
   const form = document.querySelector('form#login');
 
   form.addEventListener('submit', (event) => {
@@ -32,8 +32,9 @@ function Login() {
       })
       .catch((error) => {
         console.error(error);
+        showError('Invalid email or password', 'login-error');
       });
   });
 }
 
-Login();
+initLogin();

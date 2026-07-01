@@ -6,9 +6,9 @@ const categories = document.querySelector('.category');
 const portfolioTitle = document.querySelector('.portfolio-title');
 const edition = document.querySelector('.edition');
 const galleryDialog = document.querySelector('#galleryDialog');
-const AddPhotoDialog = document.querySelector('#addPhotoDialog');
+const addPhotoDialog = document.querySelector('#addPhotoDialog');
 const closeGalleryModal = galleryDialog.querySelector('.modal-close');
-const closeAddPhotoModal = AddPhotoDialog.querySelector('.modal-close');
+const closeAddPhotoModal = addPhotoDialog.querySelector('.modal-close');
 const addWork = document.querySelector('.add-work');
 const backArrow = document.querySelector('.back-arrow');
 const addPhoto = document.querySelector('.add-photo-btn');
@@ -70,7 +70,7 @@ function sendData() {
     })
     .then((data) => {
       console.log('Success:', data);
-      AddPhotoDialog.close();
+      addPhotoDialog.close();
       resetAddPhotoForm();
 
       const figure = createGalleryFigure(data);
@@ -101,7 +101,7 @@ function resetAddPhotoForm() {
   updateButtonState();
 }
 
-function isLoggedIn() {
+function updateAuthUI() {
   const token = localStorage.getItem('token');
   if (token !== null && token !== '') {
     toggleClass(editionBand, 'hidden', false);
@@ -123,7 +123,7 @@ function isLoggedIn() {
 logoutButton.addEventListener('click', (event) => {
   event.preventDefault();
   localStorage.removeItem('token');
-  isLoggedIn();
+  updateAuthUI();
 });
 
 if (edition && galleryDialog) {
@@ -137,7 +137,7 @@ if (edition && galleryDialog) {
     galleryDialog.close();
   });
   closeAddPhotoModal.addEventListener('click', () => {
-    AddPhotoDialog.close();
+    addPhotoDialog.close();
     resetAddPhotoForm();
   });
   galleryDialog.addEventListener('click', (event) => {
@@ -145,18 +145,18 @@ if (edition && galleryDialog) {
       galleryDialog.close();
     }
   });
-  AddPhotoDialog.addEventListener('click', (event) => {
-    if (event.target === AddPhotoDialog) {
-      AddPhotoDialog.close();
+  addPhotoDialog.addEventListener('click', (event) => {
+    if (event.target === addPhotoDialog) {
+      addPhotoDialog.close();
       resetAddPhotoForm();
     }
   });
   addWork.addEventListener('click', () => {
     galleryDialog.close();
-    AddPhotoDialog.showModal();
+    addPhotoDialog.showModal();
   });
   backArrow.addEventListener('click', () => {
-    AddPhotoDialog.close();
+    addPhotoDialog.close();
     galleryDialog.showModal();
     resetAddPhotoForm();
   });
@@ -185,5 +185,5 @@ if (edition && galleryDialog) {
   });
 }
 
-isLoggedIn();
+updateAuthUI();
 updateButtonState();

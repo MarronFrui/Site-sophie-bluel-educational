@@ -2,8 +2,15 @@ let allCategories = [];
 const selectCategory = document.querySelector('#category');
 
 function getCategories() {
+  hideError('category-error');
+
   fetch('http://localhost:5678/api/categories')
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Server is not responding');
+      }
+      return response.json();
+    })
     .then((categories) => {
       allCategories = categories;
       const container = document.querySelector('.category');
@@ -43,6 +50,10 @@ function getCategories() {
           });
         });
       });
+    })
+    .catch((error) => {
+      console.log(error);
+      showError('Unable to connect to the server', 'category-error');
     });
 }
 

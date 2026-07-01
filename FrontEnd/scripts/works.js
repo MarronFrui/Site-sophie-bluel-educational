@@ -69,8 +69,14 @@ function createModalWorkCard(work) {
 }
 
 function getWorks() {
+  hideError('gallery-error');
   fetch('http://localhost:5678/api/works')
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Server not responding');
+      }
+      return response.json();
+    })
     .then((works) => {
       const container = document.querySelector('.gallery');
       const modalContainer = document.querySelector('.modal-gallery');
@@ -81,6 +87,10 @@ function getWorks() {
         container.appendChild(figure);
         modalContainer.appendChild(card);
       }
+    })
+    .catch((error) => {
+      console.log(error);
+      showError('Unable to connect to the server', 'gallery-error');
     });
 }
 

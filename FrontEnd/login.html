@@ -38,7 +38,8 @@
           <label for="password">Mot de passe</label>
           <input type="password" id="password" autocomplete="current-password" />
         </div>
-        <input type="submit" id="login" value="Se connecter" />
+        <input type="submit" id="login-submit" value="Se connecter" />
+        <div id="login-error" class="error hidden"></div>
         <a>Mot de passe oublié</a>
       </form>
     </main>
@@ -50,6 +51,7 @@
         </ul>
       </nav>
     </footer>
+    <script src="./scripts/config.js"></script>
     <script src="./scripts/login.js"></script>
     <script src="./scripts/ui.js"></script>
   </body>
