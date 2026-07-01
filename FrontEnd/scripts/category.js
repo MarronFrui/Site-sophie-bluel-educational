@@ -4,7 +4,7 @@ const selectCategory = document.querySelector('#category');
 function getCategories() {
   hideError('category-error');
 
-  fetch('http://localhost:5678/api/categories')
+  fetch(`${BASE_URL_NAME}/api/categories`)
     .then((response) => {
       if (!response.ok) {
         throw new Error('Server is not responding');

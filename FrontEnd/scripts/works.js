@@ -34,7 +34,7 @@ function createModalWorkCard(work) {
   deleteBtn.classList.add('delete-work');
 
   deleteBtn.addEventListener('click', () => {
-    fetch(`http://localhost:5678/api/works/${work.id}`, {
+    fetch(`${BASE_URL_NAME}/api/works/${work.id}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -70,7 +70,7 @@ function createModalWorkCard(work) {
 
 function getWorks() {
   hideError('gallery-error');
-  fetch('http://localhost:5678/api/works')
+  fetch(`${BASE_URL_NAME}/api/works`)
     .then((response) => {
       if (!response.ok) {
         throw new Error('Server not responding');

@@ -54,7 +54,7 @@ function sendData() {
   formData.append('title', titleInput.value);
   formData.append('category', categorySelect.value);
 
-  fetch('http://localhost:5678/api/works', {
+  fetch(`${BASE_URL_NAME}/api/works`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('token')}`,

@@ -5,7 +5,7 @@ function initLogin() {
     event.preventDefault();
     const email = document.querySelector('#email').value;
     const password = document.querySelector('#password').value;
-    fetch('http://localhost:5678/api/users/login', {
+    fetch(`${BASE_URL_NAME}/api/users/login`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
