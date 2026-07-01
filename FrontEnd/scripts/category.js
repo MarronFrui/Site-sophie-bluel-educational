@@ -36,6 +36,10 @@ function getCategories() {
       const buttons = document.querySelectorAll('.category button');
       buttons.forEach((btn) => {
         btn.addEventListener('click', () => {
+          buttons.forEach((button) => {
+            button.classList.remove('active');
+          });
+
           const selectedId = btn.dataset.categoryId;
           const figures = document.querySelectorAll('.gallery figure');
 
@@ -44,6 +48,7 @@ function getCategories() {
 
             if (selectedId === '0' || selectedId === figureCategory) {
               figure.classList.remove('hidden');
+              btn.classList.add('active');
             } else {
               figure.classList.add('hidden');
             }

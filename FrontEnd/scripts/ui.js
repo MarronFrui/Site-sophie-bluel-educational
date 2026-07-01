@@ -63,8 +63,7 @@ function sendData() {
   })
     .then((response) => {
       if (!response.ok) {
-        console.error('Error:', response.statusText);
-        return;
+        throw new Error(response.statusText);
       }
       return response.json();
     })

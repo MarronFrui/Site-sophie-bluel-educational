@@ -167,6 +167,11 @@ section {
   color: black;
 }
 
+.category-btn.active {
+  background-color: #1d6154;
+  color: white;
+}
+
 .portfolio-title {
   display: flex;
   justify-content: center;
